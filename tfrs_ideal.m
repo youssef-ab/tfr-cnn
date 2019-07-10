@@ -44,7 +44,7 @@ else
      %ideal transformation
      m0 = round((M-1)*w/(2*pi))+1;
      for i=1:N
-         if(m0(i)<=500)
+         if(and(m0(i)>0,m0(i)<=500))
             itfr_tmp(m0(i),i)=abs(s_tmp(i));
          end
      end

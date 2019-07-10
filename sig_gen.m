@@ -1,4 +1,4 @@
-function [ s, tfr, itfr ] = sig_gen( nfreqs, N, M, L, gamma_k, I, p)
+function [ s, tfr, itfr, C ] = sig_gen( nfreqs, N, M, L, gamma_k, I, p, SNR)
 %[ s, tfr, itfr ] = sig_gen( nfreqs, N, M, L, gamma_k)
 %
 % generate nfreqs sinusoids with their ideal time frequency representation
@@ -20,14 +20,15 @@ s=zeros(nfreqs,N);
 tfr=zeros(nfreqs,M,N);
 itfr=zeros(nfreqs,M,N);
 %A=zeros(nfreqs,1);
-%F=zeros(nfreqs,1);
-SNR=30;
+C=zeros(nfreqs,I,p+1);
 for i=1:nfreqs
-    c=0.5*crand(I,p+1)
-    c(:,3)=(1/200)*crand(1)
+    c=0.5*crand(I,p+1);
+    imc3=(1/200)*randn(I,1);
+    rec3=0.5*randn(I,1);
+    c(:,3)=rec3+j*imc3
     %A(i)=a;
     %fnorm=rand*0.5;
-    %F(i)=fnorm;
+    C(i,:,:)=c;
     %phi=2*pi*(rand-rand)/2;
     [ s(i,:), itfr(i,:,:) ]=tfrs_ideal(c,N,M,SNR);
     tfr(i,:,:)=tfrgab2(s(i,:), M, L, gamma_k);
