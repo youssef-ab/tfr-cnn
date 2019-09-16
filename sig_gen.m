@@ -1,4 +1,4 @@
-function [ s, tfr, itfr, C ] = sig_gen( nfreqs, N, M, L, gamma_k, I, p, SNR)
+function [ s, tfr, itfr, rtfr, I, p, SNR] = sig_gen( nfreqs, N, M, L, gamma_k)
 %[ s, tfr, itfr ] = sig_gen( nfreqs, N, M, L, gamma_k)
 %
 % generate nfreqs sinusoids with their ideal time frequency representation
@@ -17,22 +17,33 @@ function [ s, tfr, itfr, C ] = sig_gen( nfreqs, N, M, L, gamma_k, I, p, SNR)
 % tfr:       array of nfreqs gabor transforms
 % itfr:      array of nfreqs ideal time-frequency representations
 s=zeros(nfreqs,N);
+%imp=zeros(nfreqs,N);
+%itfr_imp=zeros(nfreqs,M,N);
 tfr=zeros(nfreqs,M,N);
+rtfr=zeros(nfreqs,M,N);
 itfr=zeros(nfreqs,M,N);
-%A=zeros(nfreqs,1);
-C=zeros(nfreqs,I,p+1);
+I=zeros(nfreqs,1);
+p=zeros(nfreqs,1);
+SNR=zeros(nfreqs,1);
+snr=[5 25 45];
+%C=zeros(nfreqs,I,p+1);
 for i=1:nfreqs
-    c=0.5*crand(I,p+1);
-    imc3=(1/200)*randn(I,1);
-    rec3=0.5*randn(I,1);
-    c(:,3)=rec3+j*imc3
-    %A(i)=a;
-    %fnorm=rand*0.5;
-    C(i,:,:)=c;
+    I(i)=round(9*rand)+1;
+    p(i)=round(rand)+1;
+    c=0.5*crand(I(i),p(i)+1);
+    imc3=-(1/500)*randn(I(i),1);
+    rec3=(1/50)*randn(I(i),1);
+    if p(i)==2
+        c(:,3)=rec3+j*imc3;
+    end
+    %C(i,:,:)=c;
     %phi=2*pi*(rand-rand)/2;
-    [ s(i,:), itfr(i,:,:) ]=tfrs_ideal(c,N,M,SNR);
-    tfr(i,:,:)=tfrgab2(s(i,:), M, L, gamma_k);
-end;  
+    idx=round(2*rand)+1;
+    SNR(i)=snr(idx);%round(45*rand);
+    [ s(i,:), itfr(i,:,:) ]=tfrs_ideal(c,N,M,SNR(i));
+    tfr(i,:,:)=abs(tfrgab2(s(i,:), M, L, gamma_k)).^2;
+    [~, rtfr(i,:,:)]=tfrrgab2(s(i,:), M, L, gamma_k);
+end
 
 end
 
