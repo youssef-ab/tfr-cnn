@@ -1,6 +1,17 @@
 function [ s, itfr ] = tfr_imp( t0, N, M, SNR)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+% [ s, itfr ] = tfr_imp( t0, N, M, SNR)
+%
+% Computes the ideal time frequency representation of a sinusoide
+%
+% INPUT:
+% t0 :       moments of impulses
+% N :        number of points
+% M      :   number of frequency bins to process (default: length(x))
+% SNR:       rapport signal bruit (default 30)
+%
+% OUTPUT:
+% s:         the signal
+% itfr:      ideal time-frequency representation
 %t = N*(0:1/N:1-1/N)';
 s=zeros(N,1);
 itfr = zeros(M,N);

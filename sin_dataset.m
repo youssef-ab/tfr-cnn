@@ -4,7 +4,6 @@ clc
 model_name='Iv_pv_SNRv_model';
 filename='dataset_Iv_pv_SNRv.mat';
 %load(filename);
-%load(filename,'tfr_train', 'itfr_train', 'tfr_valid', 'itfr_valid', 'model_name');
 M=500;
 k=3;
 N=100;
@@ -49,7 +48,7 @@ xlabel('time samples', 'FontSize', 16)  %, 'FontName', 'Times-Roman', 'FontSize'
 ylabel('normalized frequency', 'FontSize', 16)
 title(sprintf('Recursive reassigned spectrogram  I=%d, p=%d, SNR=%d, L=%2.2f ', I_train(i), p_train(i), SNR_train(i), L),'FontSize', 14);
 
-
+% convert from double to single
 itfr_valid=single(itfr_valid);
 itfr_train=single(itfr_train);
 tfr_valid=single(tfr_valid);
@@ -62,6 +61,6 @@ p_train=single(p_train);
 p_valid=single(p_valid);
 I_train=single(I_train);
 I_valid=single(I_valid);
-
+% save signals
 save(filename, 's_train', 'tfr_train', 'itfr_train', 'rtfr_train', 'I_train', 'p_train', 'SNR_train', 's_valid', 'tfr_valid', 'itfr_valid', 'rtfr_valid', 'I_valid', 'p_valid', 'SNR_valid', 'model_name');
 

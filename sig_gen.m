@@ -16,6 +16,9 @@ function [ s, tfr, itfr, rtfr, I, p, SNR] = sig_gen( nfreqs, N, M, L, gamma_k)
 % s:         array of nfreqs signals
 % tfr:       array of nfreqs gabor transforms
 % itfr:      array of nfreqs ideal time-frequency representations
+% rtfr:      reassigned spectrogram
+% I:         number of component in the signal
+% p:         sinus order
 s=zeros(nfreqs,N);
 %imp=zeros(nfreqs,N);
 %itfr_imp=zeros(nfreqs,M,N);

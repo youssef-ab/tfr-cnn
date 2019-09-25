@@ -1,12 +1,11 @@
  function [ s, itfr ] = tfrs_ideal( c, N, M, SNR)
-% [ s, tfr, itfr ] = tfr_ideal( a, fnorm, N, M, L, gamma_K, phi)
+% [ s, itfr ] = tfr_ideal( c, N, M, SNR)
 %
 % Computes the ideal time frequency representation of a sinusoide
 %
 % INPUT:
-% c :        signal amplitude
+% c :        the sinus frequencies
 % N :        number of points
-% fnorm :    normalised frequency
 % M      :   number of frequency bins to process (default: length(x))
 % SNR:       rapport signal bruit (default 30)
 %
