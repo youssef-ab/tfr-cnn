@@ -1,9 +1,9 @@
 clear all
 close all
 clc
-model_name='Iv_imp_SNRv_model';
-filename='dataset_Iv_imp_SNRv.mat';
-%load(filename);
+model_name='Iv_imp_pv_SNRv_model';
+filename='dataset_Iv_imp_pv_SNRv.mat';
+load(filename);
 %load(filename,'tfr_train', 'itfr_train', 'tfr_valid', 'itfr_valid', 'model_name');
 M=500;
 k=3;

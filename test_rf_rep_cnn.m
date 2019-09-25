@@ -1,12 +1,12 @@
-function [ err,model_name ] = test_rf_rep_cnn( tfr_test, itfr_test,  model_name )
+function [ err,model_name ] = test_rf_rep_cnn( tfr_s,  model_name )
 
-filemat = 'test_dataset.mat';
+filemat = 'test_real_audio.mat';
 
 if ~exist('model_name', 'var')
    model_name = 'tmp_model';
 end
 
-save(filemat, 'tfr_test', 'itfr_test', 'model_name');
+save(filemat, 'tfr_s', 'model_name');
 
 err = system('python test_tf_rep_cnn.py');
 
