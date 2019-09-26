@@ -12,8 +12,8 @@ nfreqs_valid=500;
 nfreqs_test=100;
 gamma_k = 1e-4;
 L=7;
-[ s_train, tfr_train, itfr_train, rtfr_train,  I_train, p_train,  SNR_train ] = sig_gen( nfreqs_train, N, M, L, gamma_k);
-[ s_valid, tfr_valid, itfr_valid, rtfr_valid,  I_valid, p_valid,  SNR_valid ] = sig_gen( nfreqs_valid, N, M, L, gamma_k);
+[ s_train, tfr_train, itfr_train, rtfr_train,  I_train, p_train,  SNR_train ] = sin_gen( nfreqs_train, N, M, L, gamma_k);
+[ s_valid, tfr_valid, itfr_valid, rtfr_valid,  I_valid, p_valid,  SNR_valid ] = sin_gen( nfreqs_valid, N, M, L, gamma_k);
 
 
 i=2007;

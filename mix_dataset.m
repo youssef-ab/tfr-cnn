@@ -23,8 +23,8 @@ itfr_train=zeros(nfreqs_train,M,N); itfr_valid=zeros(nfreqs_valid,M,N);
 I_train=zeros(nfreqs_train,1); I_valid=zeros(nfreqs_valid,1);
 p_train=zeros(nfreqs_train1,1); p_valid=zeros(nfreqs_valid1,1);
 SNR_train=zeros(nfreqs_train,1); SNR_valid=zeros(nfreqs_valid1,1);
-[ s_train1, tfr_train1, itfr_train1, rtfr_train1,  I_train1, p_train1,  SNR_train1 ] = sig_gen( nfreqs_train1, N, M, L, gamma_k);
-[ s_valid1, tfr_valid1, itfr_valid1, rtfr_valid1,  I_valid1, p_valid1,  SNR_valid1 ] = sig_gen( nfreqs_valid1, N, M, L, gamma_k);
+[ s_train1, tfr_train1, itfr_train1, rtfr_train1,  I_train1, p_train1,  SNR_train1 ] = sin_gen( nfreqs_train1, N, M, L, gamma_k);
+[ s_valid1, tfr_valid1, itfr_valid1, rtfr_valid1,  I_valid1, p_valid1,  SNR_valid1 ] = sin_gen( nfreqs_valid1, N, M, L, gamma_k);
 
 [ s_train2, tfr_train2, itfr_train2, rtfr_train2,  I_train2,  SNR_train2 ] = imp_gen( nfreqs_train2, N, M, L, gamma_k);
 [ s_valid2, tfr_valid2, itfr_valid2, rtfr_valid2,  I_valid2,  SNR_valid2 ] = imp_gen( nfreqs_valid2, N, M, L, gamma_k);

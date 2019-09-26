@@ -33,7 +33,7 @@ I1=2;
 C1=zeros(I1,p1+1);
 c1=0.5*crand(I1,p1+1);
 %c(1,:)=[0.5 + 0.3481i   0.5 + 0.2211i   0.0031 + 0.0012i];
-[ s_sinus, itfr_sinus ]=tfrs_ideal(c1,N,M,SNR);
+[ s_sinus, itfr_sinus ]=tfr_sinus_ideal(c1,N,M,SNR);
 tfr_sinus=tfrgab2(s_sinus, M, L2, gamma_k);
 [~, rtfr_sinus]=tfrrgab2(s_sinus, M, L2, gamma_k);
 p2=2;
@@ -43,7 +43,7 @@ c2=0.5*crand(I2,p2+1);
 c2(1,:)=[0.5 + 0.3481i   0.5 + 0.2211i   0.0031 + 0.0012i];
 %c(2,:)=[0   0   0];
 c2(2,:)=[0.5 + 0.3481i   0.5 + 0.5i   0.0031 + -0.0011i];
-[ s_mix1, itfr_mix1 ]=tfrs_ideal(c2,N,M,SNR);
+[ s_mix1, itfr_mix1 ]=tfr_sinus_ideal(c2,N,M,SNR);
 tfr_mix1=tfrgab2(s_mix1, M, L2, gamma_k);
 [~, rtfr_mix1]=tfrrgab2(s_mix1, M, L1, gamma_k);
 figure(3)
@@ -56,7 +56,7 @@ ylabel('normalized frequency', 'FontSize', 16)
 title(sprintf('Gabor transform'),'FontSize', 14);
 
 t0=[5 30];
-[ s_mix2, itfr_mix2 ]=tfr_imp(t0,N,M,SNR);
+[ s_mix2, itfr_mix2 ]=tfr_imp_ideal(t0,N,M,SNR);
 tfr_mix2=tfrgab2(s_mix2, M, L3, gamma_k);
 [~, rtfr_mix2]=tfrrgab2(s_mix2, M, L3, gamma_k);
 figure(4)
